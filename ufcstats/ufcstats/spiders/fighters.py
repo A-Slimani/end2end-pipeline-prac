@@ -1,4 +1,3 @@
-from scrapy.spiders import CrawlSpider
 from ufcstats.items import FighterItem
 import scrapy
 import string
@@ -8,6 +7,12 @@ class FightersSpider(scrapy.Spider):
     name = "fighters"
     allowed_domains = ["www.ufcstats.com"]
     start_urls = [f"http://www.ufcstats.com/statistics/fighters?page=all&char={char}" for char in string.ascii_lowercase]
+
+    custom_settings = {
+        'ITEM_PIPELINES': {
+            'ufcstats.pipelines.fighter_pipeline': 300
+        }
+    }
 
     def parse(self, response):
         table = response.css("table.b-statistics__table")
@@ -28,5 +33,5 @@ class FightersSpider(scrapy.Spider):
                 fighter['losses'] = int(cells[8].css("::text").get().replace('\n', '').strip())
                 fighter['draws'] = int(cells[9].css("::text").get().replace('\n', '').strip())
                 fighter['belt'] = False if cells[10].css("::text").get().replace('\n', '').strip() == '' else True
-                yield fighter
+                yield fighter 
 

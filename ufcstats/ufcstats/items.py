@@ -23,3 +23,8 @@ class FighterItem(scrapy.Item):
     losses = scrapy.Field()
     draws = scrapy.Field()
     belt = scrapy.Field()
+
+class EventItem(scrapy.Item):
+    name = scrapy.Field()
+    date = scrapy.Field()
+    location = scrapy.Field()

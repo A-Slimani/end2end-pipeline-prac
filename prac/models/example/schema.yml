@@ -1,0 +1,48 @@
+
+version: 2
+
+models:
+  - name: fighters 
+    description: "Contains information about UFC fighters"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        data_tests:
+          - unique
+          - not_null
+      - name: first_name 
+        description: "first name of the fighter"
+        data_tests:
+          - not_null
+      - name: last_name 
+        description: "last name of the fighter"
+        data_tests:
+          - not_null
+      - name: nickname 
+        description: "nickname of the fighter"
+      - name: weight 
+        description: "weight of the fighter"
+      - name: height 
+        description: "height of the fighter"
+      - name: reach  
+        description: "reach of the fighter"
+      - name: stance 
+        description: "stance of the fighter"
+      - name: wins 
+        description: "number of wins"
+        data_tests:
+          - not_null
+      - name: losses 
+        description: "number of losses"
+        data_tests:
+          - not_null
+      - name: draws 
+        description: "number of draws"
+        data_tests:
+          - not_null
+      - name: belt
+        description: "Is the fighter a champion"
+        data_tests:
+          - not_null
+
+

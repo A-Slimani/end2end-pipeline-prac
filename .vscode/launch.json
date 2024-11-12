@@ -8,10 +8,11 @@
             "module": "scrapy",
             "args": [
                 "crawl",
-                "fighters"
+                "events"
             ],
             "console": "integratedTerminal",
-            "cwd": "${workspaceFolder}/ufcstats"
+            "cwd": "${workspaceFolder}/ufcstats",
+            "justMyCode": false 
         }
     ]
 }
