@@ -8,7 +8,7 @@
             "module": "scrapy",
             "args": [
                 "crawl",
-                "events"
+                "fights"
             ],
             "console": "integratedTerminal",
             "cwd": "${workspaceFolder}/ufcstats",

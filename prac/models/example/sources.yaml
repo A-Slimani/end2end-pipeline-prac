@@ -7,4 +7,8 @@ sources:
     schema: public
     tables:
       - name: fighters
-        description: "This table contains information about UFC fighters"
+        description: "contains information about UFC fighters"
+      - name: events
+        description: "contains information about UFC events"
+      - name: fights
+        description: "contains information about UFC fights"

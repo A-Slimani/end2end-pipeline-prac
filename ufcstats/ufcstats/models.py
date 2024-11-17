@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Boolean, UniqueConstraint
+from sqlalchemy import Column, Integer, String, Boolean, Date, UniqueConstraint
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
@@ -31,6 +31,32 @@ class Event(Base):
     
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String, nullable=False)
-    date = Column(String, nullable=False)
+    date = Column(Date, nullable=False)
+    location = Column(String, nullable=False)
 
     __table_args__ = (UniqueConstraint('name', 'date', name='event_unique_constraint'),)
+
+class Fight(Base):
+    __tablename__ = 'fights'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    event_name = Column(String, nullable=False)
+    r_fighter = Column(String, nullable=False)
+    l_fighter = Column(String, nullable=False)
+    r_status = Column(String, nullable=False)
+    l_status = Column(String, nullable=False)
+    r_knockdowns = Column(Integer, nullable=True)
+    l_knockdowns = Column(Integer, nullable=True)
+    r_significant_strikes = Column(Integer, nullable=True)
+    l_significant_strikes = Column(Integer, nullable=True)
+    r_takedowns = Column(Integer, nullable=True)
+    l_takedowns = Column(Integer, nullable=True)
+    r_submission_attempts = Column(Integer, nullable=True)
+    l_submission_attempts = Column(Integer, nullable=True)
+    weight_class = Column(String, nullable=False)
+    method = Column(String, nullable=False)
+    sub_method = Column(String, nullable=True)
+    round = Column(Integer, nullable=False)
+    time = Column(String, nullable=False)
+
+    __table_args__ = (UniqueConstraint('r_fighter', 'l_fighter', 'event_name', 'round', 'time', name='fight_unique_constraint'),)  

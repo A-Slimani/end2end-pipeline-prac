@@ -6,13 +6,13 @@ import scrapy
 class EventsSpider(scrapy.Spider):
     name = "events"
     allowed_domains = ["ufcstats.com"]
-    start_urls = ["http://ufcstats.com/statistics/events/completed?page=all"]
+    start_urls = ["http://ufcstats.com/statistics/events/completed"]
 
-    # custom_settings = {
-    #     'ITEM_PIPELINES': {
-    #         'ufcstats.pipelines.event_pipeline': 400
-    #     }
-    # }
+    custom_settings = {
+        'ITEM_PIPELINES': {
+            'ufcstats.pipelines.event_pipeline': 400
+        }
+    }
 
     def parse(self, response):
         table_rows = response.css("tr.b-statistics__table-row")
